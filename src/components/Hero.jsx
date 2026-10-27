@@ -166,7 +166,7 @@ export default function Hero({ t }) {
 
           <h1
             data-reveal-title
-            className="text-[clamp(44px,9.5vw,144px)] font-black leading-[0.92] tracking-[-0.05em] text-[#fafafa] uppercase"
+            className="text-[clamp(44px,9.5vw,144px)] font-black leading-[1.12] tracking-[-0.05em] text-[#fafafa] uppercase"
           >
             <span className="reveal-mask-line">
               <span className="reveal-mask-inner text-specular-glint">

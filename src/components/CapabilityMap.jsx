@@ -133,7 +133,7 @@ export default function CapabilityMap({ t }) {
 
           <h2 
             data-reveal-title
-            className="max-w-[1050px] text-[clamp(36px,6.5vw,92px)] font-black leading-[0.95] tracking-[-0.045em] text-[#fafafa] text-specular-glint"
+            className="max-w-[1050px] text-[clamp(36px,6.5vw,92px)] font-black leading-[1.14] tracking-[-0.045em] text-[#fafafa] text-specular-glint"
           >
             {t.mapTitle}
           </h2>

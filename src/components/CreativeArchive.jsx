@@ -91,7 +91,7 @@ export default function CreativeArchive({ t }) {
 
           <h2 
             data-reveal-title
-            className="max-w-[1050px] mb-8 text-[clamp(36px,6.5vw,92px)] font-black leading-[0.95] tracking-[-0.045em] text-[#fafafa] text-specular-glint"
+            className="max-w-[1050px] mb-8 text-[clamp(36px,6.5vw,92px)] font-black leading-[1.14] tracking-[-0.045em] text-[#fafafa] text-specular-glint"
           >
             {t.archiveTitle}
           </h2>

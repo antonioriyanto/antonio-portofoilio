@@ -205,7 +205,7 @@ export default function Capabilities({ t }) {
 
           <h2 
             data-reveal-title
-            className="max-w-[1100px] mb-8 text-[clamp(36px,6.5vw,92px)] font-black leading-[0.95] tracking-[-0.045em] text-[#fafafa] text-specular-glint"
+            className="max-w-[1100px] mb-8 text-[clamp(36px,6.5vw,92px)] font-black leading-[1.14] tracking-[-0.045em] text-[#fafafa] text-specular-glint"
             dangerouslySetInnerHTML={{ __html: t.whatTitle }}
           />
           <p className="max-w-[720px] text-[#8e8e8e] text-[17px] sm:text-[19px] leading-[1.6]">

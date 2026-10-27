@@ -201,7 +201,7 @@ export default function CareerJourney({ t, lang }) {
 
           <h2
             data-reveal-title
-            className="max-w-[1050px] mb-8 text-[clamp(36px,6.5vw,92px)] font-black leading-[0.95] tracking-[-0.045em] text-[#fafafa] text-specular-glint"
+            className="max-w-[1050px] mb-8 text-[clamp(36px,6.5vw,92px)] font-black leading-[1.15] tracking-[-0.045em] text-[#fafafa] text-specular-glint"
             dangerouslySetInnerHTML={{ __html: t.journeyTitle }}
           />
           <p className="max-w-[720px] mb-14 text-[#8e8e8e] text-[17px] sm:text-[19px] leading-[1.6] scroll-reveal-text">

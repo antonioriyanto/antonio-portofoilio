@@ -121,7 +121,7 @@ export default function JackOfAllTrades({ t }) {
 
         <h2
           ref={headlineRef}
-          className="mb-8 text-[clamp(40px,7vw,96px)] font-black leading-none tracking-[-0.05em] text-[#fafafa] will-change-transform"
+          className="mb-8 text-[clamp(40px,7vw,96px)] font-black leading-[1.12] tracking-[-0.05em] text-[#fafafa] will-change-transform"
         >
           {t.jackTitle}
         </h2>

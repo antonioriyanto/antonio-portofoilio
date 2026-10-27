@@ -109,7 +109,7 @@ export default function About({ t }) {
           {/* Statement with Line-by-Line Gradient Wipe */}
           <div
             ref={statementRef}
-            className="text-[clamp(26px,3.5vw,46px)] font-black leading-[1.18] tracking-[-0.04em] text-[#fafafa]"
+            className="text-[clamp(26px,3.5vw,46px)] font-black leading-[1.2] tracking-[-0.04em] text-[#fafafa]"
           >
             {t.aboutStatement.split(/\s+/).map((word, i) => (
               <span key={i} className="inline-block overflow-hidden mr-[0.28em] pb-1">

@@ -199,12 +199,13 @@ export default function Capabilities({ t }) {
         
         {/* Section Header */}
         <div className="pb-16 sm:pb-20">
-          <span className="block mb-5 text-[#8e8e8e] text-[11px] font-mono font-medium tracking-[0.2em] uppercase">
+          <span data-reveal-eyebrow className="block mb-5 text-[#8e8e8e] text-[11px] font-mono font-medium tracking-[0.2em] uppercase">
             {t.whatEyebrow}
           </span>
 
           <h2 
-            className="max-w-[1100px] mb-8 text-[clamp(36px,6.5vw,92px)] font-black leading-[0.95] tracking-[-0.045em] text-[#fafafa]"
+            data-reveal-title
+            className="max-w-[1100px] mb-8 text-[clamp(36px,6.5vw,92px)] font-black leading-[0.95] tracking-[-0.045em] text-[#fafafa] text-specular-glint"
             dangerouslySetInnerHTML={{ __html: t.whatTitle }}
           />
           <p className="max-w-[720px] text-[#8e8e8e] text-[17px] sm:text-[19px] leading-[1.6]">
@@ -254,6 +255,7 @@ export default function Capabilities({ t }) {
 
                   <div className="max-w-[520px] my-4">
                     <h3
+                      data-reveal-sub
                       className="mb-5 text-[clamp(32px,4.2vw,68px)] font-black leading-[0.95] tracking-[-0.045em] text-[#fafafa] group-hover:text-white transition-colors"
                       dangerouslySetInnerHTML={{ __html: item.title }}
                     />

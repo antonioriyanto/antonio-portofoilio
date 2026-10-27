@@ -200,11 +200,14 @@ export default function Experience({ t }) {
         {/* Header Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_0.5fr] gap-10 lg:gap-14 items-end pb-12 sm:pb-16 border-b border-white/10">
           <div>
-            <span className="block mb-5 text-[#8e8e8e] text-[11px] font-mono font-medium tracking-[0.2em] uppercase">
+            <span data-reveal-eyebrow className="block mb-5 text-[#8e8e8e] text-[11px] font-mono font-medium tracking-[0.2em] uppercase">
               {t.experienceEyebrow}
             </span>
 
-            <h2 className="max-w-[1050px] mb-8 text-[clamp(36px,6.5vw,92px)] font-black leading-[0.95] tracking-[-0.045em] text-[#fafafa]">
+            <h2 
+              data-reveal-title
+              className="max-w-[1050px] mb-8 text-[clamp(36px,6.5vw,92px)] font-black leading-[0.95] tracking-[-0.045em] text-[#fafafa] text-specular-glint"
+            >
               Watch Club Indonesia.
             </h2>
             <p className="max-w-[720px] text-[#8e8e8e] text-[17px] sm:text-[19px] leading-[1.6]">
@@ -255,7 +258,7 @@ export default function Experience({ t }) {
               </div>
 
               <div>
-                <h3 className="text-[19px] font-bold text-[#fafafa] mb-2 group-hover:text-white">
+                <h3 data-reveal-sub className="text-[19px] font-bold text-[#fafafa] mb-2 group-hover:text-white">
                   {step.title}
                 </h3>
                 <p className="text-[#8e8e8e] text-[12px] leading-relaxed">
@@ -300,11 +303,11 @@ export default function Experience({ t }) {
 
         {/* Stakeholder Map */}
         <div className="mt-16 sm:mt-24 pt-14 sm:pt-16 border-t border-white/10">
-          <span className="block mb-4 text-[#8e8e8e] text-[11px] font-mono font-medium tracking-[0.2em] uppercase">
+          <span data-reveal-eyebrow className="block mb-4 text-[#8e8e8e] text-[11px] font-mono font-medium tracking-[0.2em] uppercase">
             {t.collaboration}
           </span>
 
-          <h3 className="mb-10 text-[clamp(28px,3.5vw,50px)] font-black text-[#fafafa] leading-tight">
+          <h3 data-reveal-sub className="mb-10 text-[clamp(28px,3.5vw,50px)] font-black text-[#fafafa] leading-tight">
             {t.collaborationTitle}
           </h3>
 

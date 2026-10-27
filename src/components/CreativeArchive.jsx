@@ -85,11 +85,14 @@ export default function CreativeArchive({ t }) {
         
         {/* Header */}
         <div className="mb-12">
-          <span className="block mb-5 text-[#8e8e8e] text-[11px] font-mono font-medium tracking-[0.2em] uppercase">
+          <span data-reveal-eyebrow className="block mb-5 text-[#8e8e8e] text-[11px] font-mono font-medium tracking-[0.2em] uppercase">
             {t.archiveEyebrow}
           </span>
 
-          <h2 className="max-w-[1050px] mb-8 text-[clamp(36px,6.5vw,92px)] font-black leading-[0.95] tracking-[-0.045em] text-[#fafafa]">
+          <h2 
+            data-reveal-title
+            className="max-w-[1050px] mb-8 text-[clamp(36px,6.5vw,92px)] font-black leading-[0.95] tracking-[-0.045em] text-[#fafafa] text-specular-glint"
+          >
             {t.archiveTitle}
           </h2>
           <p className="max-w-[720px] text-[#8e8e8e] text-[17px] sm:text-[19px] leading-[1.6]">

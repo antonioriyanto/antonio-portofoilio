@@ -195,12 +195,13 @@ export default function CareerJourney({ t, lang }) {
         
         {/* Section Header */}
         <div>
-          <span className="block mb-5 text-[#8e8e8e] text-[11px] font-mono font-medium tracking-[0.2em] uppercase">
+          <span data-reveal-eyebrow className="block mb-5 text-[#8e8e8e] text-[11px] font-mono font-medium tracking-[0.2em] uppercase">
             {t.journeyEyebrow}
           </span>
 
           <h2
-            className="max-w-[1050px] mb-8 text-[clamp(36px,6.5vw,92px)] font-black leading-[0.95] tracking-[-0.045em] text-[#fafafa]"
+            data-reveal-title
+            className="max-w-[1050px] mb-8 text-[clamp(36px,6.5vw,92px)] font-black leading-[0.95] tracking-[-0.045em] text-[#fafafa] text-specular-glint"
             dangerouslySetInnerHTML={{ __html: t.journeyTitle }}
           />
           <p className="max-w-[720px] mb-14 text-[#8e8e8e] text-[17px] sm:text-[19px] leading-[1.6] scroll-reveal-text">
@@ -268,6 +269,7 @@ export default function CareerJourney({ t, lang }) {
                   {/* Left: Company & Role */}
                   <div>
                     <h3
+                      data-reveal-sub
                       className={`font-black text-[#fafafa] leading-tight mb-2 ${
                         stage.isCurrent
                           ? 'text-[clamp(26px,3.5vw,52px)]'

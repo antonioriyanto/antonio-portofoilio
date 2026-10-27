@@ -127,11 +127,14 @@ export default function CapabilityMap({ t }) {
         
         {/* Header */}
         <div className="mb-14 sm:mb-16">
-          <span className="block mb-5 text-[#8e8e8e] text-[11px] font-mono font-medium tracking-[0.2em] uppercase">
+          <span data-reveal-eyebrow className="block mb-5 text-[#8e8e8e] text-[11px] font-mono font-medium tracking-[0.2em] uppercase">
             {t.mapEyebrow}
           </span>
 
-          <h2 className="max-w-[1050px] text-[clamp(36px,6.5vw,92px)] font-black leading-[0.95] tracking-[-0.045em] text-[#fafafa]">
+          <h2 
+            data-reveal-title
+            className="max-w-[1050px] text-[clamp(36px,6.5vw,92px)] font-black leading-[0.95] tracking-[-0.045em] text-[#fafafa] text-specular-glint"
+          >
             {t.mapTitle}
           </h2>
         </div>
@@ -150,7 +153,7 @@ export default function CapabilityMap({ t }) {
                 <span className="text-[11px] font-mono text-[#8e8e8e] block mb-2 font-bold tracking-wider group-hover:text-white transition-colors">
                   [0{idx + 1}]
                 </span>
-                <h3 className="mb-6 text-[20px] sm:text-[22px] font-black text-[#fafafa] group-hover:text-white transition-colors">
+                <h3 data-reveal-sub className="mb-6 text-[20px] sm:text-[22px] font-black text-[#fafafa] group-hover:text-white transition-colors">
                   {group.title}
                 </h3>
                 <ul className="space-y-3 text-[14px]">

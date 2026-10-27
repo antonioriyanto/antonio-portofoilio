@@ -15,20 +15,6 @@ export default function Hero({ t }) {
   // Kinetic Masked Slide-up & Rolling Number Counter
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Kinetic masked slide-up
-      gsap.fromTo(
-        '.hero-title-line',
-        { y: '115%', opacity: 0 },
-        {
-          y: '0%',
-          opacity: 1,
-          duration: 1.15,
-          stagger: 0.14,
-          ease: 'power3.out',
-          delay: 0.1,
-        }
-      )
-
       // Rolling number counter for 40+ and 20+
       const counters = [
         { ref: metric40Ref, target: 40, suffix: '+' },
@@ -158,7 +144,7 @@ export default function Hero({ t }) {
   return (
     <header
       ref={containerRef}
-      className="relative w-[min(calc(100%-48px),1440px)] mx-auto min-h-[calc(100vh-72px)] pt-12 sm:pt-20 pb-12 flex flex-col justify-between overflow-visible"
+      className="relative w-[min(calc(100%-48px),1440px)] mx-auto min-h-[calc(100vh-72px)] pt-24 sm:pt-28 pb-12 flex flex-col justify-between overflow-visible"
     >
       {/* Background ambient luxury glow spot */}
       <div
@@ -171,18 +157,24 @@ export default function Hero({ t }) {
         
         {/* Left: Typography Scale Verbatim with Kinetic Masked Slide-up */}
         <div className="relative z-10">
-          <span className="block mb-6 text-[#8e8e8e] text-[11px] font-mono font-medium tracking-[0.2em] uppercase">
+          <span
+            data-reveal-eyebrow
+            className="block mb-6 text-[#8e8e8e] text-[11px] font-mono font-medium tracking-[0.2em] uppercase"
+          >
             {t.heroEyebrow}
           </span>
 
-          <h1 className="text-[clamp(44px,9.5vw,144px)] font-black leading-[0.92] tracking-[-0.05em] text-[#fafafa] uppercase">
-            <span className="block overflow-hidden pb-1">
-              <span className="hero-title-line block transform translate-y-[115%] will-change-transform">
+          <h1
+            data-reveal-title
+            className="text-[clamp(44px,9.5vw,144px)] font-black leading-[0.92] tracking-[-0.05em] text-[#fafafa] uppercase"
+          >
+            <span className="reveal-mask-line">
+              <span className="reveal-mask-inner text-specular-glint">
                 {t.heroTitlePart1}
               </span>
             </span>
-            <span className="block overflow-hidden pb-1">
-              <span className="hero-title-line block transform translate-y-[115%] will-change-transform text-transparent bg-clip-text bg-gradient-to-r from-white via-[#e5e5e5] to-[#888888]">
+            <span className="reveal-mask-line">
+              <span className="reveal-mask-inner text-specular-glint">
                 {t.heroTitlePart2}
               </span>
             </span>

@@ -84,12 +84,15 @@ export default function Contact({ t }) {
       <div className="w-[min(calc(100%-48px),1440px)] mx-auto relative z-10">
         
         {/* Eyebrow */}
-        <span className="block mb-6 text-[#8e8e8e] text-[11px] font-mono font-medium tracking-[0.2em] uppercase">
+        <span data-reveal-eyebrow className="block mb-6 text-[#8e8e8e] text-[11px] font-mono font-medium tracking-[0.2em] uppercase">
           {t.contactEyebrow}
         </span>
 
         {/* Title */}
-        <h2 className="max-w-[1050px] mb-12 text-[clamp(36px,6.5vw,92px)] font-black leading-[0.95] tracking-[-0.045em] text-[#fafafa]">
+        <h2 
+          data-reveal-title
+          className="max-w-[1050px] mb-12 text-[clamp(36px,6.5vw,92px)] font-black leading-[0.95] tracking-[-0.045em] text-[#fafafa] text-specular-glint"
+        >
           {t.contactTitle}
         </h2>
 

@@ -115,7 +115,7 @@ export default function JackOfAllTrades({ t }) {
 
       <div className="w-[min(calc(100%-48px),1440px)] mx-auto relative z-10">
         
-        <span className="block mb-6 text-[#8e8e8e] text-[11px] font-mono font-medium tracking-[0.2em] uppercase">
+        <span data-reveal-eyebrow className="block mb-6 text-[#8e8e8e] text-[11px] font-mono font-medium tracking-[0.2em] uppercase">
           {t.oneMoreThing}
         </span>
 

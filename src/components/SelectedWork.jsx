@@ -162,11 +162,14 @@ export default function SelectedWork({ t }) {
         
         {/* Header */}
         <div className="mb-14 sm:mb-16">
-          <span className="block mb-5 text-[#8e8e8e] text-[11px] font-mono font-medium tracking-[0.2em] uppercase">
+          <span data-reveal-eyebrow className="block mb-5 text-[#8e8e8e] text-[11px] font-mono font-medium tracking-[0.2em] uppercase">
             {t.workEyebrow}
           </span>
 
-          <h2 className="max-w-[1050px] mb-8 text-[clamp(36px,6.5vw,92px)] font-black leading-[0.95] tracking-[-0.045em] text-[#fafafa]">
+          <h2 
+            data-reveal-title
+            className="max-w-[1050px] mb-8 text-[clamp(36px,6.5vw,92px)] font-black leading-[0.95] tracking-[-0.045em] text-[#fafafa] text-specular-glint"
+          >
             {t.workTitle}
           </h2>
           <p className="max-w-[720px] text-[#8e8e8e] text-[17px] sm:text-[19px] leading-[1.6]">
@@ -223,7 +226,7 @@ export default function SelectedWork({ t }) {
               {/* Project Info Strip */}
               <div className="pt-5 border-t border-white/10 flex items-center justify-between gap-4 relative z-10">
                 <div>
-                  <strong className="block text-[19px] sm:text-[21px] font-bold text-[#fafafa] mb-1 group-hover:text-white transition-colors">
+                  <strong data-reveal-sub className="block text-[19px] sm:text-[21px] font-bold text-[#fafafa] mb-1 group-hover:text-white transition-colors">
                     {proj.title}
                   </strong>
                   <span className="text-[#8e8e8e] text-[12px] sm:text-[13px]">

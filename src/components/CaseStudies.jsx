@@ -117,12 +117,13 @@ export default function CaseStudies({ t }) {
         
         {/* Header */}
         <div className="mb-14 sm:mb-16">
-          <span className="block mb-5 text-[#8e8e8e] text-[11px] font-mono font-medium tracking-[0.2em] uppercase">
+          <span data-reveal-eyebrow className="block mb-5 text-[#8e8e8e] text-[11px] font-mono font-medium tracking-[0.2em] uppercase">
             {t.caseEyebrow}
           </span>
 
           <h2
-            className="max-w-[1050px] mb-8 text-[clamp(36px,6.5vw,92px)] font-black leading-[0.95] tracking-[-0.045em] text-[#fafafa]"
+            data-reveal-title
+            className="max-w-[1050px] mb-8 text-[clamp(36px,6.5vw,92px)] font-black leading-[0.95] tracking-[-0.045em] text-[#fafafa] text-specular-glint"
             dangerouslySetInnerHTML={{ __html: t.caseTitle }}
           />
           <p className="max-w-[720px] text-[#8e8e8e] text-[17px] sm:text-[19px] leading-[1.6]">
@@ -168,7 +169,7 @@ export default function CaseStudies({ t }) {
                     <span className="text-[#8e8e8e] text-[12px] sm:text-[13px] font-mono font-bold">
                       {cs.num}
                     </span>
-                    <h3 className="text-[clamp(20px,2.5vw,36px)] font-black tracking-tight text-[#fafafa] group-hover:text-white transition-colors">
+                    <h3 data-reveal-sub className="text-[clamp(20px,2.5vw,36px)] font-black tracking-tight text-[#fafafa] group-hover:text-white transition-colors">
                       {cs.title}
                     </h3>
                   </div>

@@ -1,0 +1,251 @@
+import React, { useState, useEffect, useRef } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import WatchClubSimulator from './WatchClubSimulator'
+import { Smartphone, Sparkles, Cpu, ShieldCheck } from 'lucide-react'
+
+gsap.registerPlugin(ScrollTrigger)
+
+export default function TechSection({ t }) {
+  const containerRef = useRef(null)
+  const cardRef = useRef(null)
+  const phoneFrameRef = useRef(null)
+  const [terminalLog, setTerminalLog] = useState('> initializing_simulator... OK')
+
+  // Live Terminal Log simulation
+  useEffect(() => {
+    const logs = [
+      '> simulator_mode: ACTIVE [8 SELECTED STORES]',
+      '> canvas_render_pipeline: 880x880 RETINA',
+      '> audio_synthesis: WEB_AUDIO_API READY',
+      '> state_management: DECOUPLED_IN_MEMORY',
+      '> anti_tamper_token: VERIFIED [STANDALONE]',
+    ]
+    let logIdx = 0
+
+    const interval = setInterval(() => {
+      logIdx = (logIdx + 1) % logs.length
+      setTerminalLog(logs[logIdx])
+    }, 3800)
+
+    return () => clearInterval(interval)
+  }, [])
+
+  // Spotlight surge animation on viewport enter
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      if (cardRef.current) {
+        ScrollTrigger.create({
+          trigger: cardRef.current,
+          start: 'top 70%',
+          once: true,
+          onEnter: () => {
+            gsap.fromTo(
+              cardRef.current,
+              { borderColor: 'rgba(255, 255, 255, 0.45)', boxShadow: '0 0 35px rgba(255, 255, 255, 0.15)' },
+              { borderColor: 'rgba(255, 255, 255, 0.1)', boxShadow: '0 25px 60px rgba(0, 0, 0, 0.7)', duration: 1.4, ease: 'power2.out' }
+            )
+
+            if (phoneFrameRef.current) {
+              gsap.fromTo(
+                phoneFrameRef.current,
+                { y: 30, opacity: 0.8 },
+                { y: 0, opacity: 1, duration: 1.2, ease: 'power3.out' }
+              )
+            }
+          },
+        })
+      }
+    }, containerRef)
+
+    return () => ctx.revert()
+  }, [])
+
+  const tags = [
+    'Product Concept',
+    'UI/UX',
+    'Business Logic',
+    'AI-Assisted Development',
+    'Retail Operations',
+    '40+ Stores',
+  ]
+
+  const technicalHighlights = [
+    {
+      title: 'Decoupled In-Memory Engine',
+      desc: 'Independent local state architecture operating 100% serverless for zero-latency portfolio inspection.',
+    },
+    {
+      title: 'Procedural Slice Dispersion',
+      desc: 'Real-time wheel angle computation aligning dynamic canvas sectors with the golden indicator needle.',
+    },
+    {
+      title: 'Synthesized Haptic Audio',
+      desc: 'Web Audio API micro-frequency synthesis generating physical mechanical clicks without audio assets.',
+    },
+    {
+      title: 'Enterprise Multi-Store Quotas',
+      desc: 'Individual inventory deductions per branch preventing over-claiming and ensuring fairness.',
+    },
+  ]
+
+  const handleMouseMove = (e) => {
+    if (window.matchMedia('(pointer: coarse)').matches) return
+    const card = e.currentTarget
+    const rect = card.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+    card.style.setProperty('--mouse-x', `${x}px`)
+    card.style.setProperty('--mouse-y', `${y}px`)
+  }
+
+  return (
+    <section ref={containerRef} className="py-24 sm:py-32 bg-[#0d0d0d] border-t border-white/10 relative" id="technology">
+      <div className="w-[min(calc(100%-48px),1440px)] mx-auto">
+        
+        {/* Section Header */}
+        <div className="mb-14 sm:mb-16">
+          <span className="block mb-5 text-[#8e8e8e] text-[11px] font-mono font-medium tracking-[0.2em] uppercase">
+            {t.techEyebrow}
+          </span>
+
+          <h2
+            className="max-w-[1050px] mb-8 text-[clamp(36px,6.5vw,92px)] font-black leading-[0.95] tracking-[-0.045em] text-[#fafafa]"
+            dangerouslySetInnerHTML={{ __html: t.techTitle }}
+          />
+          <p className="max-w-[720px] text-[#8e8e8e] text-[17px] sm:text-[19px] leading-[1.6]">
+            {t.techIntro}
+          </p>
+        </div>
+
+        {/* Interactive Dark Bento Spotlight Panel */}
+        <article
+          ref={cardRef}
+          onMouseMove={handleMouseMove}
+          className="spotlight-card group relative grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] min-h-[640px] overflow-hidden bg-[#141414]/90 border border-white/10 rounded-3xl shadow-2xl backdrop-blur-2xl transition-all duration-300 hover:border-white/25 will-change-transform"
+        >
+          {/* Dynamic Spotlight Radial Beam */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"
+            style={{
+              background:
+                'radial-gradient(600px circle at var(--mouse-x, -500px) var(--mouse-y, -500px), rgba(255,255,255,0.06), transparent 40%)',
+            }}
+          />
+
+          {/* Left Column: Interactive Smartphone Mockup (iPhone 16 Pro Frame) */}
+          <div className="relative min-h-[580px] sm:min-h-[680px] bg-gradient-to-br from-[#181818] via-[#121212] to-[#0a0a0a] p-4 sm:p-8 lg:p-10 flex flex-col items-center justify-center border-b lg:border-b-0 lg:border-r border-white/10 overflow-hidden z-10">
+            
+            {/* Ambient Background Grid */}
+            <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
+
+            {/* Window Chrome Header Bar with Terminal Log */}
+            <div className="w-full flex items-center justify-between text-[11px] font-mono text-[#8e8e8e] border-b border-white/10 pb-3 mb-6">
+              <div className="flex items-center gap-1.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
+                <span className="w-2.5 h-2.5 rounded-full bg-amber-500/60" />
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/60" />
+                <span className="text-[10px] font-mono text-[#8e8e8e] ml-2 hidden sm:inline">
+                  simulator.watchclub.internal
+                </span>
+              </div>
+              <span className="text-[10px] font-mono font-medium tracking-wider text-accent-chrome/90 truncate max-w-[240px] sm:max-w-none">
+                {terminalLog}
+              </span>
+            </div>
+
+            {/* iPhone 16 Pro Device Mockup Container */}
+            <div
+              ref={phoneFrameRef}
+              className="relative w-full max-w-[340px] sm:max-w-[360px] h-[580px] sm:h-[620px] rounded-[48px] p-2.5 sm:p-3 bg-gradient-to-b from-[#2b2b2b] via-[#1c1c1c] to-[#121212] border-[4px] border-[#383838] shadow-[0_25px_80px_rgba(0,0,0,0.9),0_0_0_1px_rgba(255,255,255,0.18)] flex flex-col will-change-transform"
+            >
+              {/* Inner Bezel Screen */}
+              <div className="relative w-full h-full rounded-[38px] overflow-hidden bg-[#0c3875] border-2 border-black/50 shadow-inner flex flex-col">
+                
+                {/* Dynamic Island Notch */}
+                <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-24 h-5 bg-black rounded-full z-40 flex items-center justify-between px-2.5 pointer-events-none shadow-md">
+                  <div className="w-2 h-2 rounded-full bg-[#181818] border border-white/10" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-[#111] border border-white/10 flex items-center justify-center">
+                    <div className="w-1 h-1 rounded-full bg-blue-900/60" />
+                  </div>
+                </div>
+
+                {/* Smartphone Display Content: Watch Club Simulator */}
+                <div
+                  data-lenis-prevent
+                  className="w-full h-full pt-7 pb-4 flex flex-col relative overflow-hidden overscroll-contain"
+                >
+                  <WatchClubSimulator />
+                </div>
+
+                {/* Bottom Home Indicator Bar */}
+                <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-28 h-1 bg-white/40 rounded-full z-40 pointer-events-none" />
+
+                {/* Subtle Glass Glare Reflection */}
+                <div className="pointer-events-none absolute inset-0 rounded-[38px] bg-gradient-to-tr from-white/[0.04] via-transparent to-transparent z-30" />
+              </div>
+            </div>
+
+            {/* Hint Beneath Mockup */}
+            <div className="mt-5 flex items-center gap-2 text-[11px] text-[#8e8e8e] font-mono">
+              <Smartphone className="w-3.5 h-3.5 text-[#fafafa]/60" />
+              <span>Interactive Live Demo — Try entering data & spin the wheel</span>
+            </div>
+          </div>
+
+          {/* Right Column: Copy & Architectural Breakdown */}
+          <div className="p-8 sm:p-12 lg:p-14 flex flex-col justify-between relative z-10">
+            <div>
+              <span className="inline-block mb-4 text-[#8e8e8e] text-[11px] font-mono font-bold tracking-[0.15em] uppercase">
+                {t.internalSystem}
+              </span>
+
+              <h3 className="mb-5 text-[clamp(28px,3.8vw,52px)] font-black leading-tight text-[#fafafa]">
+                Watch Club Lucky Spin
+              </h3>
+
+              <p className="text-[#8e8e8e] text-[15px] sm:text-[17px] leading-relaxed mb-8">
+                {t.luckySpinCopy}
+              </p>
+
+              {/* Technical Feature Matrix */}
+              <div className="space-y-4 mb-8">
+                {technicalHighlights.map((feat, i) => (
+                  <div
+                    key={i}
+                    className="p-3.5 rounded-xl bg-white/[0.02] border border-white/10 hover:border-white/20 transition duration-200"
+                  >
+                    <h4 className="text-[13px] font-mono font-bold text-white mb-1 flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-white/60" />
+                      {feat.title}
+                    </h4>
+                    <p className="text-[12px] text-[#8e8e8e] leading-relaxed">
+                      {feat.desc}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <div className="flex flex-wrap gap-2 pt-6 border-t border-white/10">
+                {tags.map((tag, idx) => (
+                  <span
+                    key={idx}
+                    className="px-3 py-1 border border-white/10 rounded-full text-[11px] font-mono font-medium text-white/80 bg-white/[0.03] backdrop-blur-sm"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+          </div>
+
+        </article>
+
+      </div>
+    </section>
+  )
+}

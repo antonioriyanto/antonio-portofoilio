@@ -190,7 +190,7 @@ export default function CareerJourney({ t, lang }) {
   }
 
   return (
-    <section ref={containerRef} className="py-24 sm:py-32 bg-[#0d0d0d] border-t border-white/10 relative" id="journey">
+    <section ref={containerRef} className="py-24 sm:py-32 bg-[#0d0d0d]/85 backdrop-blur-md border-t border-white/10 relative" id="journey">
       <div className="w-[min(calc(100%-48px),1440px)] mx-auto">
         
         {/* Section Header */}

@@ -72,7 +72,7 @@ export default function Contact({ t }) {
   return (
     <section
       ref={containerRef}
-      className="pt-24 sm:pt-32 pb-12 bg-[#0a0a0a] text-white border-t border-white/10 relative"
+      className="pt-24 sm:pt-32 pb-12 bg-[#0d0d0d]/85 backdrop-blur-md text-white border-t border-white/10 relative"
       id="contact"
     >
       {/* Background ambient luxury glow spot */}

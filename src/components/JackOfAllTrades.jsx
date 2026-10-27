@@ -33,13 +33,13 @@ export default function JackOfAllTrades({ t }) {
         )
       }
 
-      // 2. Atmospheric Dim to #070707
+      // 2. Atmospheric Dim to rgba(7, 7, 7, 0.90)
       if (sectionRef.current) {
         gsap.fromTo(
           sectionRef.current,
-          { backgroundColor: '#0d0d0d' },
+          { backgroundColor: 'rgba(13, 13, 13, 0.85)' },
           {
-            backgroundColor: '#070707',
+            backgroundColor: 'rgba(7, 7, 7, 0.90)',
             ease: 'power1.out',
             scrollTrigger: {
               trigger: sectionRef.current,
@@ -95,7 +95,7 @@ export default function JackOfAllTrades({ t }) {
   return (
     <section
       ref={sectionRef}
-      className="py-32 sm:py-40 bg-[#0d0d0d] border-t border-white/10 text-center relative overflow-hidden transition-colors duration-500"
+      className="py-32 sm:py-40 bg-[#0d0d0d]/85 backdrop-blur-md border-t border-white/10 text-center relative overflow-hidden transition-colors duration-500"
     >
       {/* Subtle Parallax Outline Watermark */}
       <div

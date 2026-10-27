@@ -83,7 +83,7 @@ export default function About({ t }) {
   return (
     <section
       ref={sectionRef}
-      className="py-24 sm:py-32 border-t border-white/10 bg-canvas relative overflow-hidden"
+      className="py-24 sm:py-32 border-t border-white/10 bg-[#0d0d0d]/85 backdrop-blur-md relative overflow-hidden"
       id="about"
     >
       {/* Subtle Parallax Outline Watermark */}

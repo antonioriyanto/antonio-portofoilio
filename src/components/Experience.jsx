@@ -192,7 +192,7 @@ export default function Experience({ t }) {
   return (
     <section
       ref={containerRef}
-      className="py-24 sm:py-32 bg-[#0c0c0c] text-white border-t border-white/10 relative"
+      className="py-24 sm:py-32 bg-[#0d0d0d]/85 text-white backdrop-blur-md border-t border-white/10 relative"
       id="experience"
     >
       <div className="w-[min(calc(100%-48px),1440px)] mx-auto">

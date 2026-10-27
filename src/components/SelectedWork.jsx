@@ -157,7 +157,7 @@ export default function SelectedWork({ t }) {
   }
 
   return (
-    <section ref={containerRef} className="py-24 sm:py-32 border-t border-white/10 bg-canvas relative" id="work">
+    <section ref={containerRef} className="py-24 sm:py-32 border-t border-white/10 bg-[#0d0d0d]/85 backdrop-blur-md relative" id="work">
       <div className="w-[min(calc(100%-48px),1440px)] mx-auto">
         
         {/* Header */}

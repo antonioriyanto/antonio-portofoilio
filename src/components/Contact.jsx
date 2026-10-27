@@ -89,10 +89,7 @@ export default function Contact({ t }) {
         </span>
 
         {/* Title */}
-        <h2 
-          data-reveal-title
-          className="max-w-[1050px] mb-12 text-[clamp(36px,6.5vw,92px)] font-black leading-[1.14] tracking-[-0.045em] text-[#fafafa] text-specular-glint"
-        >
+        <h2 className="max-w-[1050px] mb-12 text-[clamp(36px,6.5vw,84px)] font-black leading-[1.14] tracking-[-0.04em] text-[#fafafa]">
           {t.contactTitle}
         </h2>
 

@@ -23,14 +23,11 @@ export default function CaseStudies({ t }) {
     },
     {
       num: '02',
-      title: 'Watch Club Lucky Spin',
-      category: 'Problem → UI/UX → Internal System',
-      challenge:
-        'Manual promotional raffle draws at retail outlets were vulnerable to fraud, difficult to audit, and lacked customer excitement.',
-      solution:
-        'Designed and engineered an interactive digital Lucky Spin web application with rule-based probability engines, tamper-proof voucher verification, and real-time backend synchronization.',
-      impact:
-        'Engaged thousands of retail customers, boosted campaign conversions, and provided HQ with instant real-time audit logs.',
+      title: t.caseLuckyDipTitle,
+      category: t.caseLuckyDipCategory,
+      challenge: t.caseLuckyDipChallenge,
+      solution: t.caseLuckyDipSolution,
+      impact: t.caseLuckyDipImpact,
       poster: 'images/web-technology-cover.webp',
       video: 'videos/web-technology.mp4',
     },
@@ -122,8 +119,7 @@ export default function CaseStudies({ t }) {
           </span>
 
           <h2
-            data-reveal-title
-            className="max-w-[1050px] mb-8 text-[clamp(36px,6.5vw,92px)] font-black leading-[0.95] tracking-[-0.045em] text-[#fafafa] text-specular-glint"
+            className="max-w-[1050px] mb-8 text-[clamp(36px,6.5vw,84px)] font-black leading-[1.14] tracking-[-0.04em] text-[#fafafa]"
             dangerouslySetInnerHTML={{ __html: t.caseTitle }}
           />
           <p className="max-w-[720px] text-[#8e8e8e] text-[17px] sm:text-[19px] leading-[1.6]">
@@ -210,7 +206,7 @@ export default function CaseStudies({ t }) {
                           }`}
                         >
                           <span className="block text-[11px] font-mono font-extrabold uppercase tracking-wider text-[#8e8e8e] mb-3">
-                            01 / The Challenge
+                            {t.caseLabelChallenge}
                           </span>
                           <p className="text-[#e5e5e5] leading-relaxed">
                             {cs.challenge}
@@ -226,7 +222,7 @@ export default function CaseStudies({ t }) {
                           }`}
                         >
                           <span className="block text-[11px] font-mono font-extrabold uppercase tracking-wider text-[#8e8e8e] mb-3">
-                            02 / The Solution
+                            {t.caseLabelSolution}
                           </span>
                           <p className="text-[#e5e5e5] leading-relaxed">
                             {cs.solution}
@@ -242,7 +238,7 @@ export default function CaseStudies({ t }) {
                           }`}
                         >
                           <span className="block text-[11px] font-mono font-extrabold uppercase tracking-wider text-[#8e8e8e] mb-3">
-                            03 / Real Impact
+                            {t.caseLabelImpact}
                           </span>
                           <p className="text-white leading-relaxed font-semibold">
                             {cs.impact}

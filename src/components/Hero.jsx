@@ -164,19 +164,12 @@ export default function Hero({ t }) {
             {t.heroEyebrow}
           </span>
 
-          <h1
-            data-reveal-title
-            className="text-[clamp(44px,9.5vw,144px)] font-black leading-[1.12] tracking-[-0.05em] text-[#fafafa] uppercase"
-          >
-            <span className="reveal-mask-line">
-              <span className="reveal-mask-inner text-specular-glint">
-                {t.heroTitlePart1}
-              </span>
+          <h1 className="text-[clamp(44px,9.5vw,144px)] font-black leading-[1.12] tracking-[-0.05em] text-[#fafafa] uppercase">
+            <span className="block">
+              {t.heroTitlePart1}
             </span>
-            <span className="reveal-mask-line">
-              <span className="reveal-mask-inner text-specular-glint">
-                {t.heroTitlePart2}
-              </span>
+            <span className="block">
+              {t.heroTitlePart2}
             </span>
           </h1>
         </div>

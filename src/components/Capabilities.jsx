@@ -204,8 +204,7 @@ export default function Capabilities({ t }) {
           </span>
 
           <h2 
-            data-reveal-title
-            className="max-w-[1100px] mb-8 text-[clamp(36px,6.5vw,92px)] font-black leading-[1.14] tracking-[-0.045em] text-[#fafafa] text-specular-glint"
+            className="max-w-[1100px] mb-8 text-[clamp(36px,6.5vw,84px)] font-black leading-[1.14] tracking-[-0.04em] text-[#fafafa]"
             dangerouslySetInnerHTML={{ __html: t.whatTitle }}
           />
           <p className="max-w-[720px] text-[#8e8e8e] text-[17px] sm:text-[19px] leading-[1.6]">
@@ -255,8 +254,7 @@ export default function Capabilities({ t }) {
 
                   <div className="max-w-[520px] my-4">
                     <h3
-                      data-reveal-sub
-                      className="mb-5 text-[clamp(32px,4.2vw,68px)] font-black leading-[0.95] tracking-[-0.045em] text-[#fafafa] group-hover:text-white transition-colors"
+                      className="mb-5 text-[clamp(32px,4.2vw,68px)] font-black leading-[1.14] tracking-[-0.045em] text-[#fafafa] group-hover:text-white transition-colors"
                       dangerouslySetInnerHTML={{ __html: item.title }}
                     />
                     <p className="max-w-[460px] mb-8 text-[#8e8e8e] text-[15px] sm:text-[16px] leading-[1.65]">

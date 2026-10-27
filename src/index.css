@@ -86,35 +86,6 @@
   will-change: transform, opacity;
 }
 
-/* Liquid Titanium Typography Reveal & Specular Glint */
-.text-specular-glint {
-  background: linear-gradient(
-    110deg,
-    #fafafa 0%,
-    #fafafa 40%,
-    #ffffff 50%,
-    #fafafa 60%,
-    #fafafa 100%
-  );
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-}
-
-.reveal-mask-line {
-  display: block;
-  overflow: hidden;
-  padding-bottom: 0.15em;
-  line-height: 1.15;
-}
-
-.reveal-mask-inner {
-  display: block;
-  transform: translateY(115%);
-  will-change: transform, opacity;
-}
 
 /* Spotlight Bento Box utility */
 .spotlight-card {

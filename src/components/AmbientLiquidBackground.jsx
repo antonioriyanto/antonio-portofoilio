@@ -64,25 +64,25 @@ float getLiquidHeight(vec2 uv, float t) {
   vec2 q = vec2(fbm(p * 1.6 + t * 0.06), fbm(p * 1.6 - t * 0.05));
   float h = fbm(p * 2.0 + q * 1.4 + t * 0.04);
 
-  // 2. Interactive mouse surge
+  // 2. Interactive mouse surge (boosted amplitude & smooth falloff)
   vec2 m = u_mouse * aspect;
   float distToMouse = length(p - m);
-  float cursorWave = exp(-distToMouse * 5.0) * u_energy * 0.8;
+  float cursorWave = exp(-distToMouse * 3.8) * u_energy * 1.6;
   h += cursorWave;
 
-  // 3. Propagating ripple rings
+  // 3. Propagating ripple rings with higher caustic amplitude
   for (int i = 0; i < 6; i++) {
     vec4 rip = u_ripples[i];
     if (rip.w > 0.001) {
       float age = t - rip.z;
-      if (age > 0.0 && age < 2.8) {
+      if (age > 0.0 && age < 3.2) {
         vec2 rCenter = rip.xy * aspect;
         float d = length(p - rCenter);
-        float radius = age * 0.55;
+        float radius = age * 0.65;
         float ringDist = abs(d - radius);
-        float decay = exp(-age * 1.5) * rip.w;
-        float wave = sin(ringDist * 30.0 - age * 7.0) * exp(-ringDist * 15.0) * decay;
-        h += wave * 0.45;
+        float decay = exp(-age * 1.2) * rip.w;
+        float wave = sin(ringDist * 28.0 - age * 7.5) * exp(-ringDist * 12.0) * decay;
+        h += wave * 0.85;
       }
     }
   }
@@ -94,14 +94,15 @@ void main() {
   vec2 uv = v_uv;
   float t = u_time;
   
-  // Finite difference surface normal
-  float eps = 2.0 / min(u_resolution.x, u_resolution.y);
+  // Finite difference surface normal with elevated derivative scale
+  float eps = 1.8 / min(u_resolution.x, u_resolution.y);
   float hL = getLiquidHeight(uv - vec2(eps, 0.0), t);
   float hR = getLiquidHeight(uv + vec2(eps, 0.0), t);
   float hD = getLiquidHeight(uv - vec2(0.0, eps), t);
   float hU = getLiquidHeight(uv + vec2(0.0, eps), t);
+  float hC = getLiquidHeight(uv, t);
 
-  vec3 normal = normalize(vec3((hL - hR) * 3.8, (hD - hU) * 3.8, 1.0));
+  vec3 normal = normalize(vec3((hL - hR) * 6.5, (hD - hU) * 6.5, 1.0));
 
   // VisionOS Lighting vectors
   vec3 lightDir = normalize(vec3(-0.35, 0.65, 0.8));
@@ -109,30 +110,40 @@ void main() {
   vec3 halfDir = normalize(lightDir + viewDir);
 
   float diff = max(dot(normal, lightDir), 0.0);
-  float spec1 = pow(max(dot(normal, halfDir), 0.0), 32.0);
-  float spec2 = pow(max(dot(normal, halfDir), 0.0), 96.0);
+  
+  // Three-tier specular response (soft silver sheen #555555 up to brilliant mirror glints #fafafa)
+  float specBroad = pow(max(dot(normal, halfDir), 0.0), 14.0);
+  float specMid   = pow(max(dot(normal, halfDir), 0.0), 38.0);
+  float specSharp = pow(max(dot(normal, halfDir), 0.0), 120.0);
   float fresnel = pow(1.0 - max(dot(normal, viewDir), 0.0), 3.0);
+
+  // Surface curvature caustic accent
+  float curvature = clamp((hL + hR + hD + hU - 4.0 * hC) * 12.0, 0.0, 1.0);
+  vec3 caustic = vec3(0.35, 0.36, 0.40) * curvature * (0.3 + u_energy * 0.7);
 
   // Dark Technical Luxury Palette:
   // Base canvas: #0d0d0d
   vec3 baseColor = vec3(13.0 / 255.0, 13.0 / 255.0, 13.0 / 255.0);
   
-  // Liquid body shading
-  vec3 liquidTone = mix(vec3(0.055), vec3(0.12), normal.y * 0.5 + 0.5);
+  // Elevated liquid body shading
+  vec3 liquidTone = mix(vec3(0.06), vec3(0.18), normal.y * 0.5 + 0.5);
 
-  // Subtle chromatic refraction
-  float caOffset = (normal.x + normal.y) * 0.012;
+  // Chromatic refraction on wave crests
+  float caOffset = (normal.x + normal.y) * 0.018;
   vec3 caColor = vec3(
     getLiquidHeight(uv + vec2(caOffset, 0.0), t),
-    getLiquidHeight(uv, t),
+    hC,
     getLiquidHeight(uv - vec2(caOffset, 0.0), t)
-  ) * 0.035;
+  ) * 0.055;
 
-  // Specular silver / chrome glints (#383838 to #fafafa)
-  vec3 specColor = vec3(0.35) * spec1 + vec3(0.9) * spec2 * 0.5;
-  vec3 rimColor = vec3(0.2) * fresnel;
+  // Luminous silver / chrome highlights (#555555 to #888888, peaking at #fafafa)
+  vec3 specColor = vec3(0.35) * specBroad * 0.5
+                 + vec3(0.65) * specMid * 0.8
+                 + vec3(0.98) * specSharp * 0.7;
 
-  vec3 finalColor = baseColor + liquidTone * 0.4 + caColor + specColor + rimColor;
+  vec3 rimColor = vec3(0.28) * fresnel;
+
+  vec3 finalColor = baseColor + liquidTone * 0.45 + caustic + caColor + specColor + rimColor;
 
   // Micro-dither to eliminate color banding
   float dither = (hash(uv * u_resolution + fract(t)) - 0.5) * (1.2 / 255.0);
@@ -234,12 +245,12 @@ export default function AmbientLiquidBackground() {
       const elapsedSec = (now - startTimeRef.current) * 0.001
       const idleTime = now - lastActiveRef.current
 
-      // Decay energy
-      energyRef.current *= 0.96
+      // Decay energy with smooth natural momentum
+      energyRef.current *= 0.965
 
-      // Check if ripples are still actively undulating
+      // Check if ripples are still actively undulating (up to 3.2s)
       const hasActiveRipples = ripplesRef.current.some(
-        (r) => r.intensity > 0.005 && elapsedSec - r.time < 2.5
+        (r) => r.intensity > 0.005 && elapsedSec - r.time < 3.2
       )
 
       // Smart Sleep Engine Check: 0% GPU when idle > 2s and ripples have settled
@@ -318,18 +329,18 @@ export default function AmbientLiquidBackground() {
 
       wakeUp()
 
-      // Add energy based on mouse velocity
-      energyRef.current = Math.min(1.0, energyRef.current + dist * 6.0)
+      // Add energy based on mouse velocity with elevated responsiveness
+      energyRef.current = Math.min(1.0, energyRef.current + dist * 8.0)
 
-      // Spawn ripple pulses when moving
-      if (dist > 0.02) {
+      // Spawn ripple pulses with higher caustic displacement
+      if (dist > 0.012) {
         const nowSec = (performance.now() - startTimeRef.current) * 0.001
         const idx = rippleIdxRef.current
         ripplesRef.current[idx] = {
           x: normX,
           y: normY,
           time: nowSec,
-          intensity: Math.min(1.0, dist * 8.0),
+          intensity: Math.min(1.0, dist * 12.0),
         }
         rippleIdxRef.current = (idx + 1) % 6
       }

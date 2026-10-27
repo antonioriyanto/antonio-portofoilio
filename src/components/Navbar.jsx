@@ -12,14 +12,14 @@ export default function Navbar({ lang, setLang, t }) {
   ]
 
   return (
-    <nav className="sticky top-0 z-50 bg-[#0d0d0d]/80 backdrop-blur-xl border-b border-white/10 transition-colors duration-200">
+    <nav className="sticky top-0 z-50 bg-gradient-to-b from-[#0d0d0d]/95 via-[#0d0d0d]/60 to-transparent transition-all duration-300">
       <div className="w-[min(calc(100%-48px),1440px)] mx-auto min-h-[72px] flex items-center justify-between gap-6">
         
         {/* Logo */}
         <a 
           href="#" 
           data-cursor="magnetic"
-          className="font-extrabold text-[14px] tracking-[-0.02em] uppercase text-white hover:opacity-80 transition-opacity flex-shrink-0 flex items-center gap-2"
+          className="font-extrabold text-[14px] tracking-[-0.02em] uppercase text-white hover:opacity-80 transition-opacity flex-shrink-0 flex items-center gap-2 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
         >
           <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
           <span>ANTONIO RIYANTO</span>
@@ -34,7 +34,7 @@ export default function Navbar({ lang, setLang, t }) {
                 key={link.href}
                 href={link.href}
                 data-cursor="magnetic"
-                className="relative py-1 text-[#8e8e8e] hover:text-white transition-colors group"
+                className="relative py-1 text-[#8e8e8e] hover:text-white transition-colors group drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
               >
                 {link.label}
                 <span className="absolute left-0 right-full bottom-0 h-[1.5px] bg-white transition-all duration-300 ease-luxury group-hover:right-0" />
@@ -44,7 +44,7 @@ export default function Navbar({ lang, setLang, t }) {
 
           {/* Language Switch Capsule */}
           <div 
-            className="flex items-center p-[3px] bg-white/[0.04] border border-white/10 rounded-full backdrop-blur-md shadow-sm"
+            className="flex items-center p-[3px] bg-white/[0.04] border border-white/10 rounded-full backdrop-blur-md shadow-sm drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
             role="group"
             aria-label="Language selection"
           >
@@ -80,7 +80,7 @@ export default function Navbar({ lang, setLang, t }) {
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden flex flex-col justify-center items-center w-9 h-9 border border-white/20 rounded-full gap-1 p-2 bg-white/5"
+            className="md:hidden flex flex-col justify-center items-center w-9 h-9 border border-white/20 rounded-full gap-1 p-2 bg-white/5 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
             aria-label="Toggle navigation menu"
           >
             <span className={`w-4 h-[1.5px] bg-white transition-transform duration-200 ${mobileMenuOpen ? 'rotate-45 translate-y-[3.5px]' : ''}`} />

@@ -75,7 +75,7 @@ export default function App() {
   const t = translations[lang] || translations.en
 
   return (
-    <div className="min-h-screen bg-[#0d0d0d] text-[#fafafa] font-sans antialiased selection:bg-[#fafafa] selection:text-[#0d0d0d] relative overflow-x-hidden">
+    <div className="min-h-screen bg-transparent text-[#fafafa] font-sans antialiased selection:bg-[#fafafa] selection:text-[#0d0d0d] relative overflow-x-hidden">
       {/* Ambient GPU-Accelerated Liquid Background */}
       <AmbientLiquidBackground />
 

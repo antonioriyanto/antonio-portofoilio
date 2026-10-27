@@ -227,87 +227,10 @@ export default function AmbientLiquidBackground() {
     const uEnergy = gl.getUniformLocation(program, 'u_energy')
     const uRipples = gl.getUniformLocation(program, 'u_ripples')
 
-    // Downscaled Resolution Buffer setup (0.5x for zero GPU lag, max DPR 1.5)
-    const handleResize = () => {
-      const width = window.innerWidth
-      const height = window.innerHeight
-      const dpr = Math.min(window.devicePixelRatio || 1, 1.5)
-
-      // Downscaled simulation buffer (0.5x viewport scale)
-      const bufferW = Math.max(320, Math.floor(width * dpr * 0.5))
-      const bufferH = Math.max(240, Math.floor(height * dpr * 0.5))
-
-      if (canvas.width !== bufferW || canvas.height !== bufferH) {
-        canvas.width = bufferW
-        canvas.height = bufferH
-        gl.viewport(0, 0, bufferW, bufferH)
-      }
-
-      wakeUp()
-    }
-
-    window.addEventListener('resize', handleResize)
-    handleResize()
-
     const isTouch = window.matchMedia('(pointer: coarse)').matches
 
-    // Wake Up Smart Sleep Engine
-    const wakeUp = () => {
-      lastActiveRef.current = performance.now()
-      if (isSleepingRef.current) {
-        isSleepingRef.current = false
-        if (!animIdRef.current) {
-          animIdRef.current = requestAnimationFrame(render)
-        }
-      }
-    }
-
-    // Mouse movement handler
-    const handleMouseMove = (e) => {
-      const normX = e.clientX / window.innerWidth
-      const normY = 1.0 - e.clientY / window.innerHeight
-
-      const dx = normX - mouseRef.current.prevX
-      const dy = normY - mouseRef.current.prevY
-      const dist = Math.sqrt(dx * dx + dy * dy)
-
-      mouseRef.current.x = normX
-      mouseRef.current.y = normY
-      mouseRef.current.prevX = normX
-      mouseRef.current.prevY = normY
-
-      wakeUp()
-
-      // Add energy based on mouse velocity
-      energyRef.current = Math.min(1.0, energyRef.current + dist * 6.0)
-
-      // Spawn ripple pulses when moving
-      if (dist > 0.02) {
-        const nowSec = (performance.now() - startTimeRef.current) * 0.001
-        const idx = rippleIdxRef.current
-        ripplesRef.current[idx] = {
-          x: normX,
-          y: normY,
-          time: nowSec,
-          intensity: Math.min(1.0, dist * 8.0),
-        }
-        rippleIdxRef.current = (idx + 1) % 6
-      }
-    }
-
-    // Scroll wake up
-    const handleScroll = () => {
-      wakeUp()
-      energyRef.current = Math.min(0.8, energyRef.current + 0.15)
-    }
-
-    if (!isTouch) {
-      window.addEventListener('mousemove', handleMouseMove, { passive: true })
-    }
-    window.addEventListener('scroll', handleScroll, { passive: true })
-
     // Render loop
-    const render = (now) => {
+    function render(now) {
       const elapsedSec = (now - startTimeRef.current) * 0.001
       const idleTime = now - lastActiveRef.current
 
@@ -348,6 +271,84 @@ export default function AmbientLiquidBackground() {
 
       animIdRef.current = requestAnimationFrame(render)
     }
+
+    // Wake Up Smart Sleep Engine
+    function wakeUp() {
+      lastActiveRef.current = performance.now()
+      if (isSleepingRef.current) {
+        isSleepingRef.current = false
+        if (!animIdRef.current) {
+          animIdRef.current = requestAnimationFrame(render)
+        }
+      }
+    }
+
+    // Downscaled Resolution Buffer setup (0.5x for zero GPU lag, max DPR 1.5)
+    function handleResize() {
+      const width = window.innerWidth
+      const height = window.innerHeight
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.5)
+
+      // Downscaled simulation buffer (0.5x viewport scale)
+      const bufferW = Math.max(320, Math.floor(width * dpr * 0.5))
+      const bufferH = Math.max(240, Math.floor(height * dpr * 0.5))
+
+      if (canvas.width !== bufferW || canvas.height !== bufferH) {
+        canvas.width = bufferW
+        canvas.height = bufferH
+        gl.viewport(0, 0, bufferW, bufferH)
+      }
+
+      wakeUp()
+    }
+
+    // Mouse movement handler
+    function handleMouseMove(e) {
+      const normX = e.clientX / window.innerWidth
+      const normY = 1.0 - e.clientY / window.innerHeight
+
+      const dx = normX - mouseRef.current.prevX
+      const dy = normY - mouseRef.current.prevY
+      const dist = Math.sqrt(dx * dx + dy * dy)
+
+      mouseRef.current.x = normX
+      mouseRef.current.y = normY
+      mouseRef.current.prevX = normX
+      mouseRef.current.prevY = normY
+
+      wakeUp()
+
+      // Add energy based on mouse velocity
+      energyRef.current = Math.min(1.0, energyRef.current + dist * 6.0)
+
+      // Spawn ripple pulses when moving
+      if (dist > 0.02) {
+        const nowSec = (performance.now() - startTimeRef.current) * 0.001
+        const idx = rippleIdxRef.current
+        ripplesRef.current[idx] = {
+          x: normX,
+          y: normY,
+          time: nowSec,
+          intensity: Math.min(1.0, dist * 8.0),
+        }
+        rippleIdxRef.current = (idx + 1) % 6
+      }
+    }
+
+    // Scroll wake up
+    function handleScroll() {
+      wakeUp()
+      energyRef.current = Math.min(0.8, energyRef.current + 0.15)
+    }
+
+    // Initial setup and event listeners
+    window.addEventListener('resize', handleResize)
+    handleResize()
+
+    if (!isTouch) {
+      window.addEventListener('mousemove', handleMouseMove, { passive: true })
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
 
     // Start initial loop
     animIdRef.current = requestAnimationFrame(render)

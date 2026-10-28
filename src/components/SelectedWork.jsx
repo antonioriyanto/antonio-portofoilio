@@ -188,10 +188,12 @@ export default function SelectedWork({ t }) {
               data-preview-image={proj.poster}
               data-preview-video={proj.video}
               style={{ transformStyle: 'preserve-3d' }}
-              className={`work-card-reveal group relative p-6 sm:p-8 flex flex-col justify-between bg-[#141414]/80 border border-white/10 rounded-2xl backdrop-blur-xl transition-[border-color,box-shadow,transform] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-white/30 hover:shadow-[0_25px_60px_rgba(0,0,0,0.7)] ${getColSpanClass(
+              className={`work-card-reveal group relative p-6 sm:p-8 flex flex-col justify-between crystal-glass rounded-2xl transition-[border-color,box-shadow,transform] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-white/35 hover:shadow-[0_25px_60px_rgba(0,0,0,0.7)] ${getColSpanClass(
                 proj.size
               )}`}
             >
+              {/* Top Specular Bevel Line */}
+              <div className="glass-bevel-line z-20" />
               {/* Card Specular Light Sheen */}
               <div
                 aria-hidden="true"
@@ -206,6 +208,42 @@ export default function SelectedWork({ t }) {
               <div className="flex-1 w-full grid place-items-center bg-gradient-to-br from-[#1c1c1c] via-[#141414] to-[#0d0d0d] border border-white/[0.06] rounded-xl mb-6 p-6 relative overflow-hidden group-hover:border-white/20 transition-all duration-300 z-10">
                 <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px]" />
                 
+                {/* Media Preview with 404 Fallback Guard */}
+                {proj.poster && (
+                  <img
+                    src={proj.poster}
+                    alt={proj.title}
+                    className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-500 z-[1]"
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none'
+                    }}
+                  />
+                )}
+                {proj.video && (
+                  <video
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="none"
+                    src={proj.video}
+                    className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-[2]"
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none'
+                    }}
+                  >
+                    <source
+                      src={proj.video}
+                      type="video/mp4"
+                      onError={(e) => {
+                        if (e.currentTarget.parentElement) {
+                          e.currentTarget.parentElement.style.display = 'none'
+                        }
+                      }}
+                    />
+                  </video>
+                )}
+
                 {/* Scaled Inner Preview Container */}
                 <div className="text-center relative z-10 transform group-hover:scale-[1.04] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform">
                   <div className="w-12 h-12 mx-auto mb-3 rounded-full border border-white/20 bg-white/5 flex items-center justify-center text-white/50 group-hover:border-white/60 group-hover:text-white transition-colors">

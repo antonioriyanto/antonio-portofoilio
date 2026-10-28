@@ -221,10 +221,12 @@ export default function Capabilities({ t }) {
 
               <article
                 onMouseMove={handleMouseMove}
-                className={`spotlight-card capability-card group relative grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] min-h-[500px] lg:min-h-[580px] rounded-2xl overflow-hidden border border-white/10 bg-[#121212]/80 backdrop-blur-xl transition-all duration-300 hover:border-white/25 will-change-transform ${
+                className={`spotlight-card capability-card crystal-glass group relative grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] min-h-[500px] lg:min-h-[580px] rounded-2xl overflow-hidden transition-all duration-300 hover:border-white/30 hover:shadow-[0_25px_60px_rgba(0,0,0,0.8)] will-change-transform ${
                   item.reverse ? 'lg:grid-cols-[1.1fr_0.9fr]' : ''
                 }`}
               >
+                {/* Top Specular Bevel Line */}
+                <div className="glass-bevel-line z-20" />
                 {/* Dynamic Spotlight Radial Layer */}
                 <div
                   aria-hidden="true"
@@ -312,20 +314,41 @@ export default function Capabilities({ t }) {
                       </small>
                     </div>
 
-                    {/* Optional Video with fallback */}
+                    {/* Optional Image Poster with 404 Fallback Guard */}
+                    {item.poster && (
+                      <img
+                        src={item.poster}
+                        alt={item.mediaPlaceholder}
+                        className="absolute inset-0 z-15 w-full h-full object-cover transition-transform duration-700 ease-luxury group-hover/media:scale-105"
+                        onError={(e) => {
+                          e.currentTarget.style.display = 'none'
+                        }}
+                      />
+                    )}
+
+                    {/* Optional Video with 404 Fallback Guard */}
                     <video
                       autoPlay
                       muted
                       loop
                       playsInline
                       preload="none"
+                      src={item.videoSrc}
                       poster={item.poster}
                       className="absolute inset-0 z-20 w-full h-full object-cover transition-transform duration-700 ease-luxury group-hover/media:scale-105 opacity-0 group-hover/media:opacity-100"
                       onError={(e) => {
                         e.currentTarget.style.display = 'none'
                       }}
                     >
-                      <source src={item.videoSrc} type="video/mp4" />
+                      <source
+                        src={item.videoSrc}
+                        type="video/mp4"
+                        onError={(e) => {
+                          if (e.currentTarget.parentElement) {
+                            e.currentTarget.parentElement.style.display = 'none'
+                          }
+                        }}
+                      />
                     </video>
                   </div>
 

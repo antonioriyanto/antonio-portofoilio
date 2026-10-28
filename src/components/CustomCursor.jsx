@@ -191,10 +191,11 @@ export default function CustomCursor() {
       <div
         ref={previewRef}
         aria-hidden="true"
-        className={`fixed top-0 left-0 w-[280px] aspect-[16/10] rounded-xl overflow-hidden pointer-events-none z-[9990] backdrop-blur-xl bg-canvas-card/90 border border-white/20 shadow-2xl transition-opacity duration-300 ${
+        className={`fixed top-0 left-0 w-[280px] aspect-[16/10] rounded-xl overflow-hidden pointer-events-none z-[9990] crystal-glass transition-opacity duration-300 ${
           previewData.active ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
         }`}
       >
+        <div className="glass-bevel-line" />
         {/* Subtle radial inner glow */}
         <div className="absolute inset-0 bg-gradient-to-tr from-white/10 via-transparent to-transparent pointer-events-none" />
 
@@ -207,12 +208,18 @@ export default function CustomCursor() {
             playsInline
             src={previewData.video}
             className="w-full h-full object-cover"
+            onError={(e) => {
+              e.currentTarget.style.display = 'none'
+            }}
           />
         ) : previewData.image ? (
           <img
             src={previewData.image}
             alt=""
             className="w-full h-full object-cover"
+            onError={(e) => {
+              e.currentTarget.style.display = 'none'
+            }}
           />
         ) : (
           <div className="w-full h-full flex flex-col justify-between p-4 bg-gradient-to-br from-[#1c1c1c] to-[#0f0f0f]">

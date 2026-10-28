@@ -109,10 +109,10 @@ export default function CreativeArchive({ t }) {
                 type="button"
                 data-cursor="magnetic"
                 onClick={() => setSelectedFilter(cat)}
-                className={`px-4 py-2 border rounded-full text-[12px] font-medium backdrop-blur-md transition-all duration-200 ${
+                className={`px-4 py-2 rounded-full text-[12px] font-medium transition-all duration-200 ${
                   isActive
-                    ? 'bg-white text-[#0d0d0d] border-white shadow-[0_2px_15px_rgba(255,255,255,0.2)] font-bold'
-                    : 'bg-white/[0.04] text-[#8e8e8e] border-white/10 hover:text-white hover:border-white/30 hover:bg-white/[0.08]'
+                    ? 'bg-white text-[#0d0d0d] shadow-[0_2px_15px_rgba(255,255,255,0.25)] font-bold'
+                    : 'crystal-glass-pill text-[#8e8e8e] hover:text-white hover:border-white/35'
                 }`}
               >
                 {label}
@@ -127,8 +127,10 @@ export default function CreativeArchive({ t }) {
             <div
               key={item.id}
               data-cursor="magnetic"
-              className="archive-card-cascade group aspect-[4/5] p-5 sm:p-6 flex flex-col justify-between bg-[#141414]/80 border border-white/10 rounded-xl text-[#8e8e8e] backdrop-blur-xl transition-[border-color,background-color,box-shadow,transform] duration-300 ease-luxury hover:-translate-y-1 hover:border-white/30 hover:bg-[#1a1a1a] hover:shadow-[0_20px_40px_rgba(0,0,0,0.7)] relative overflow-hidden will-change-transform"
+              className="archive-card-cascade group aspect-[4/5] p-5 sm:p-6 flex flex-col justify-between crystal-glass rounded-xl text-[#8e8e8e] transition-[border-color,background-color,box-shadow,transform] duration-300 ease-luxury hover:-translate-y-1 hover:border-white/35 hover:shadow-[0_20px_50px_rgba(0,0,0,0.8)] relative overflow-hidden will-change-transform"
             >
+              {/* Top Specular Bevel Line */}
+              <div className="glass-bevel-line z-20" />
               {/* Subtle top header */}
               <div className="flex justify-between items-center z-10">
                 <span className="text-[10px] font-mono font-bold text-[#8e8e8e]">

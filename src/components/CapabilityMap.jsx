@@ -141,10 +141,10 @@ export default function CapabilityMap({ t }) {
           {groups.map((group, idx) => (
             <article
               key={idx}
-              className="matrix-column-card group min-h-[320px] sm:min-h-[340px] p-7 sm:p-8 border-r border-b border-white/10 flex flex-col justify-between bg-[#141414]/90 hover:bg-[#1a1a1a] backdrop-blur-xl transition-[border-color,background-color,box-shadow] duration-300 ease-luxury relative will-change-transform"
+              className="matrix-column-card group min-h-[320px] sm:min-h-[340px] p-7 sm:p-8 border-r border-b border-white/10 flex flex-col justify-between crystal-glass hover:bg-[#1a1a1a]/70 transition-[border-color,background-color,box-shadow] duration-300 ease-luxury relative will-change-transform"
             >
-              {/* Subtle top edge glow on hover */}
-              <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/0 group-hover:via-white/40 to-transparent transition-all duration-300" />
+              {/* Top Specular Bevel Line */}
+              <div className="glass-bevel-line" />
 
               <div>
                 <span className="text-[11px] font-mono text-[#8e8e8e] block mb-2 font-bold tracking-wider group-hover:text-white transition-colors">

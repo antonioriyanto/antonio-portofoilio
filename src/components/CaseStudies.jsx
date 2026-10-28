@@ -194,17 +194,19 @@ export default function CaseStudies({ t }) {
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <div className="px-6 sm:px-12 pb-10 pt-4 bg-[#141414]/90 border-t border-white/10">
+                    <div className="px-6 sm:px-12 pb-10 pt-6 crystal-glass rounded-2xl my-3 relative">
+                      <div className="glass-bevel-line" />
                       {/* Kinetic Staggered Drawer Cards */}
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-[14px]">
                         <div
                           style={{
                             transitionDelay: isExpanded ? '60ms' : '0ms',
                           }}
-                          className={`p-6 bg-[#1a1a1a] border border-white/10 rounded-xl shadow-lg transform transition-all duration-400 ease-out ${
+                          className={`p-6 crystal-glass rounded-xl shadow-lg transform transition-all duration-400 ease-out relative ${
                             isExpanded ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
                           }`}
                         >
+                          <div className="glass-bevel-line" />
                           <span className="block text-[11px] font-mono font-extrabold uppercase tracking-wider text-[#8e8e8e] mb-3">
                             {t.caseLabelChallenge}
                           </span>
@@ -217,10 +219,11 @@ export default function CaseStudies({ t }) {
                           style={{
                             transitionDelay: isExpanded ? '140ms' : '0ms',
                           }}
-                          className={`p-6 bg-[#1a1a1a] border border-white/10 rounded-xl shadow-lg transform transition-all duration-400 ease-out ${
+                          className={`p-6 crystal-glass rounded-xl shadow-lg transform transition-all duration-400 ease-out relative ${
                             isExpanded ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
                           }`}
                         >
+                          <div className="glass-bevel-line" />
                           <span className="block text-[11px] font-mono font-extrabold uppercase tracking-wider text-[#8e8e8e] mb-3">
                             {t.caseLabelSolution}
                           </span>
@@ -233,10 +236,11 @@ export default function CaseStudies({ t }) {
                           style={{
                             transitionDelay: isExpanded ? '220ms' : '0ms',
                           }}
-                          className={`p-6 bg-[#1a1a1a] border border-white/10 rounded-xl shadow-lg transform transition-all duration-400 ease-out ${
+                          className={`p-6 crystal-glass rounded-xl shadow-lg transform transition-all duration-400 ease-out relative ${
                             isExpanded ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
                           }`}
                         >
+                          <div className="glass-bevel-line" />
                           <span className="block text-[11px] font-mono font-extrabold uppercase tracking-wider text-[#8e8e8e] mb-3">
                             {t.caseLabelImpact}
                           </span>

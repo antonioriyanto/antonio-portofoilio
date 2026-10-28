@@ -2,6 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .crystal-glass {
+    background-color: rgba(20, 20, 20, 0.45);
+    backdrop-filter: blur(20px) saturate(190%) contrast(105%);
+    -webkit-backdrop-filter: blur(20px) saturate(190%) contrast(105%);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: 
+      inset 0 1px 1px 0 rgba(255, 255, 255, 0.38),
+      inset 0 -1px 1px 0 rgba(0, 0, 0, 0.5),
+      0 20px 50px rgba(0, 0, 0, 0.65);
+    position: relative;
+  }
+
+  .crystal-glass-pill {
+    background-color: rgba(20, 20, 20, 0.55);
+    backdrop-filter: blur(24px) saturate(200%) contrast(105%);
+    -webkit-backdrop-filter: blur(24px) saturate(200%) contrast(105%);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    box-shadow: 
+      inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.45),
+      inset 0 -1px 1px 0 rgba(0, 0, 0, 0.4),
+      0 12px 35px rgba(0, 0, 0, 0.7);
+  }
+
+  .glass-bevel-line {
+    position: absolute;
+    top: 0;
+    left: 1.5rem;
+    right: 1.5rem;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+    pointer-events: none;
+  }
+}
+
 @layer base {
   :root {
     --bg: #0d0d0d;

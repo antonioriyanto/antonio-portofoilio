@@ -115,7 +115,7 @@ export default function Contact({ t }) {
               target="_blank"
               rel="noopener noreferrer"
               data-cursor="magnetic"
-              className="min-h-[50px] px-8 inline-flex items-center justify-center rounded-full text-[13px] font-semibold text-white border border-white/20 hover:border-white/50 hover:bg-white/10 hover:-translate-y-0.5 active:translate-y-0 backdrop-blur-md transition-all duration-200"
+              className="min-h-[50px] px-8 inline-flex items-center justify-center rounded-full text-[13px] font-semibold text-white crystal-glass-pill hover:border-white/50 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
             >
               {t.whatsApp} ↗
             </a>
@@ -127,7 +127,7 @@ export default function Contact({ t }) {
               target="_blank"
               rel="noopener noreferrer"
               data-cursor="magnetic"
-              className="min-h-[50px] px-8 inline-flex items-center justify-center rounded-full text-[13px] font-semibold text-white border border-white/20 hover:border-white/50 hover:bg-white/10 hover:-translate-y-0.5 active:translate-y-0 backdrop-blur-md transition-all duration-200"
+              className="min-h-[50px] px-8 inline-flex items-center justify-center rounded-full text-[13px] font-semibold text-white crystal-glass-pill hover:border-white/50 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
             >
               {t.linkedIn} ↗
             </a>
